@@ -31,6 +31,15 @@ class TrafficSniffer:
         dest_ip = inet_ntoa(header[1])
         return source_ip, dest_ip, proto, version, headerlen, ttl
 
+    def convert_ipv6(self, header):
+        source_ip6 = socket.inet_ntop(socket.AF_INET6, header[8:24])
+        dest_ip6 = socket.inet_ntop(socket.AF_INET6, header[24:40])
+        proto = header[23]
+        version = (header[14] >> 4) & 0xF #Bit shift to get top 4 most 
+        headerlen = ((header[14]) & 0xF) * 4 #bit shift not needed to get bottom 4
+        return source_ip6, dest_ip6
+
+
 
     def packet_capture(self):
         try:
@@ -95,10 +104,11 @@ class TrafficSniffer:
                         print("Source Port: {}, Destination Port: {}".format(source_port, dest_port))
                         print("Length: {}, Checksum: {}".format(length, checksum))
 
-                else: #packet is not an IPv4 packet
-                    print("Other Packet Type")
+                elif ethernet_protocol == 56710: #packet is not an IPv4 packet
+                    source_ip6, dest_ip6 = self.convert_ipv6(raw_packet[14:])
+                    print("\nIPv6 Packet:")
                     print("Dest MAC: {} Source MAC: {}, Ethernet Protocol: {}".format(dest_mac,source_mac, ethernet_protocol))
-                    print("Source IP: {}, Destination IP: {}".format(source_ip, dest_ip))
+                    print("Source IP: {}, Destination IP: {}".format(source_ip6, dest_ip6))
 
         except socket.error as e:
             if e.errno == 1:
