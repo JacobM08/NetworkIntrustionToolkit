@@ -7,6 +7,7 @@ The purpose of this project is to understand how network traffic is captured and
 
 ## Contents
 - [Installation](#installation)
+- [Running the Program](#running-the-program)
 - [Attack Setup](#attack-setup)
 - 
 
@@ -28,3 +29,5 @@ Details about the installation process go here.
 ## Attack Setup
 
 Details about the attack setup go here.
+
+## Running the Program
