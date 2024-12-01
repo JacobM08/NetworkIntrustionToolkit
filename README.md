@@ -18,7 +18,7 @@ The purpose of this project is to understand how network traffic is captured and
   - Utilized to configure lab environment
 - Improving Scapy's Packet Sending Performance - Mad-Max Scapy: [Link](https://byt3bl33d3r.github.io/mad-max-scapy-improving-scapys-packet-sending-performance.html)
   - Utilized to understand how to improve Scapy packet send time
-- NetworkX Documentation - NetworkX: [Link}(https://networkx.org/documentation/stable/reference/introduction.html)
+- NetworkX Documentation - NetworkX: [Link](https://networkx.org/documentation/stable/reference/introduction.html)
   - Utilized for creating network graphs
 - Scapy Documentation - Scapy: [Link](https://scapy.readthedocs.io/en/latest/index.html)
 
