@@ -9,7 +9,6 @@ The purpose of this project is to understand how network traffic is captured and
 - [Installation](#installation) 🧰
 - [Running the Program](#running-the-program) ⚙️
 - [Attack Setup](#attack-setup) 🔧
-- 
 
 
 ## Resources Used
@@ -24,8 +23,15 @@ The purpose of this project is to understand how network traffic is captured and
 
 ## Installation
 
-Details about the installation process go here.
+Firstly, clone the repository from GitHub with the following command:
+```bash
+git clone https://github.com/JacobM08/4480Project
+```
 
+Next, navigate into the directory created:
+```bash
+cd 4480Project
+```
 ## Attack Setup
 
 Details about the attack setup go here.
