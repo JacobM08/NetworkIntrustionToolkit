@@ -3,8 +3,10 @@ from scapy.all import *
 import networkx as nx
 import matplotlib.pyplot as plt
 from collections import defaultdict
+import os
 
 class networkMapper:
+    @staticmethod
     def open_pcap(pcap_file):
         try:
             packets = rdpcap(pcap_file)
@@ -13,7 +15,7 @@ class networkMapper:
             print(f"Error: Cannot find file {pcap_file}")
             return None
 
-    def os_fingerprint(packet):
+    def os_fingerprint(self, packet):
         if 'IP' in packet:
             ttl = packet['IP'].ttl
             if ttl <= 64:
@@ -24,7 +26,7 @@ class networkMapper:
                 return 'Other'
         return 'Unknown'
 
-    def analyze_packets(packets, self):
+    def analyze_packets(self, packets):
         print("Analyzing packets...")
         os_mapping = {}
         dns_responses_count = defaultdict(int)
@@ -58,7 +60,7 @@ class networkMapper:
         
         return os_mapping, dns_servers, ip_packets
 
-    def plot_map(packets, self):
+    def plot_map(self, packets):
         if not packets:
             print("No packets to analyze")
             return
@@ -110,12 +112,15 @@ class networkMapper:
             # Create a single figure with a specific ID
             fig = plt.figure(num=1, figsize=(12, 12))
             
+            # Assign colors based on OS type or DNS server status
             node_colors = []
             for node in G.nodes():
                 if node in dns_servers:
-                    node_colors.append('red')
+                    node_colors.append('red')  # DNS servers are red
+                elif os_mapping.get(node, 'Unknown') == 'Windows':
+                    node_colors.append('green')
                 else:
-                    node_colors.append('lightblue')
+                    node_colors.append('lightblue') 
             
             nx.draw(G, pos,
                     labels={node: G.nodes[node]['label'] for node in G.nodes()},
@@ -126,10 +131,12 @@ class networkMapper:
                     edge_color='lightgrey',
                     arrows=True)
             
-            legend_elements = [plt.Line2D([0], [0], marker='o', color='w', label='Regular Host',
-                                        markerfacecolor='lightblue', markersize=10),
-                            plt.Line2D([0], [0], marker='o', color='w', label='DNS Server',
-                                        markerfacecolor='red', markersize=10)]
+            legend_elements = [plt.Line2D([0], [0], marker='o', color='w', label='Regular Host (Linux/Unix)',
+                                          markerfacecolor='lightblue', markersize=10),
+                               plt.Line2D([0], [0], marker='o', color='w', label='Windows Host',
+                                          markerfacecolor='green', markersize=10),
+                               plt.Line2D([0], [0], marker='o', color='w', label='DNS Server',
+                                          markerfacecolor='red', markersize=10)]
             plt.legend(handles=legend_elements, loc='upper left', bbox_to_anchor=(1, 1))
             
             plt.title('Network Topology Map')
@@ -139,10 +146,9 @@ class networkMapper:
             
         except Exception as e:
             print(f"Error drawing graph: {str(e)}")
-            import traceback
-            traceback.print_exc()
 
     def netmap(self):
-        packets = self.open_pcap('/home/kali/Documents/Networksniff/trace1.pcapng')
+        getcwd = os.getcwd()
+        packets = self.open_pcap(getcwd + '/output.pcap')
         if packets:
             self.plot_map(packets)
