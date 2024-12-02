@@ -23,7 +23,7 @@ The purpose of this project is to understand how network traffic is captured and
   - Utilized for creating network graphs
 - Scapy Documentation - Scapy: [Link](https://scapy.readthedocs.io/en/latest/index.html)
 
-## Installation
+## Installation 🧰
 
 Firstly, clone the repository from GitHub with the following command:
 ```bash
@@ -34,7 +34,7 @@ Next, navigate into the directory created:
 ```bash
 cd 4480Project/controller
 ```
-## Running the Program
+## Running the Program ⚙️
 
 To run the program, enter the following command:
 ```bash
@@ -44,19 +44,19 @@ sudo python3 controller.py
 
 A menu with multiple options will appear, make the desired choice. Upon keyboard interruption (ctrl + C) you will be returned to the main menu
 
-## Sniffing
+## Sniffing 👃
 
 The sniffing function establishes a socket connection to capture traffic. It displays all the necessary information and ASCII decodes unencrypted packets containing a payload. The traffic capture operates on the default network interface.
 
-## Network Mapping
+## Network Mapping 🗺️
 
 The network mapping function operates by opening the pcap file within the cloned repository with the name 'output.pcap'
 
-## Attack Setup
+## Attack Setup 🔧
 
 Please ensure that this attack is used strictly for educational purposes and that any unauthorized use of these techniques on systems without explicit permission is illegal.
 
-To conduct the Kaminsky attack in a sandbox environment follow the below steps:
+To configure the Kaminsky attack follow the below steps:
 
 - Understand your target, there are a few mutable fields.
    - targetDomain: This is the domain that you wish to have the attacker poison the cache of in the target DNS
