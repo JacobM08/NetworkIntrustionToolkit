@@ -4,9 +4,9 @@ import time
 from colorama import Fore, Style  # For colored output
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from Model.mitmAttack import *
-from Model.scanner import *
-from Model.networkMap import *
+from model.mitmAttack import *
+from model.scanner import *
+from model.networkmap import *
 
 
 def print_header(title, symbol="="):
