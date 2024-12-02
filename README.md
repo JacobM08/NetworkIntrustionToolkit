@@ -25,7 +25,7 @@ The purpose of this project is to understand how network traffic is captured and
 
 Firstly, clone the repository from GitHub with the following command:
 ```bash
-git clone https://github.com/JacobM08/4480Project
+git clone https://github.com/JacobM08/4480Project.git
 ```
 
 Next, navigate into the directory created:
