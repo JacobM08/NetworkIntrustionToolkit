@@ -46,11 +46,11 @@ A menu with multiple options will appear, make the desired choice. Upon keyboard
 
 ## Sniffing
 
-Enter Text here
+The sniffing function establishes a socket connection to capture traffic. It displays all the necessary information and ASCII decodes unencrypted packets containing a payload. The traffic capture operates on the default network interface.
 
 ## Network Mapping
 
-Enter Text here
+The network mapping function operates by opening the pcap file within the cloned repository with the name 'output.pcap'
 
 ## Attack Setup
 
@@ -58,7 +58,7 @@ Please ensure that this attack is used strictly for educational purposes and tha
 
 To conduct the Kaminsky attack in a sandbox environment follow the below steps:
 
-- Understand your target, there are a few fields that are mutable.
+- Understand your target, there are a few mutable fields.
    - targetDomain: This is the domain that you wish to have the attacker poison the cache of in the target DNS
    - targetDNS: This is the DNS server you wish to target, this DNS server's cache for example.com will change
    - attacker: This is the malicious name server that the attack is in control of
