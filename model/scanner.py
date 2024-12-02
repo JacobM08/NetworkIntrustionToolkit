@@ -34,9 +34,6 @@ class TrafficSniffer:
     def convert_ipv6(self, header):
         source_ip6 = socket.inet_ntop(socket.AF_INET6, header[8:24])
         dest_ip6 = socket.inet_ntop(socket.AF_INET6, header[24:40])
-        proto = header[23]
-        version = (header[14] >> 4) & 0xF #Bit shift to get top 4 most 
-        headerlen = ((header[14]) & 0xF) * 4 #bit shift not needed to get bottom 4
         return source_ip6, dest_ip6
 
 
@@ -117,9 +114,3 @@ class TrafficSniffer:
     
         except KeyboardInterrupt as e:
                 print("Total Packet capture: {}".format(self.packet_count))
-
-
-
-if __name__ == "__main__":
-    sniff = TrafficSniffer()
-    sniff.packet_capture()
