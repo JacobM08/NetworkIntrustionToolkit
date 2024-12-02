@@ -8,6 +8,8 @@ The purpose of this project is to understand how network traffic is captured and
 ## Contents
 - [Installation](#installation) 🧰
 - [Running the Program](#running-the-program) ⚙️
+- [Sniffing](#sniffing)👃
+- [Network Mapping](#network-mapping)🗺️
 - [Attack Setup](#attack-setup) 🔧
 
 
@@ -30,12 +32,36 @@ git clone https://github.com/JacobM08/4480Project
 
 Next, navigate into the directory created:
 ```bash
-cd 4480Project
+cd 4480Project/controller
 ```
-## Attack Setup
-
-Details about the attack setup go here.
-
 ## Running the Program
 
-Details about running the program go here.
+To run the program, enter the following command:
+```bash
+sudo python3 controller.py
+```
+*Note*: Please make sure you have Python 3 installed. The sniffing function establishes a socket connection, so running with sudo is required.
+
+A menu with multiple options will appear, make the desired choice. Upon keyboard interruption (ctrl + C) you will be returned to the main menu
+
+## Sniffing
+
+Enter Text here
+
+## Network Mapping
+
+Enter Text here
+
+## Attack Setup
+
+Please ensure that this attack is used strictly for educational purposes and that any unauthorized use of these techniques on systems without explicit permission is illegal.
+
+To conduct the Kaminsky attack in a sandbox environment follow the below steps:
+
+- Understand your target, there are a few fields that are mutable.
+   - targetDomain: This is the domain that you wish to have the attacker poison the cache of in the target DNS
+   - targetDNS: This is the DNS server you wish to target, this DNS server's cache for example.com will change
+   - attacker: This is the malicious name server that the attack is in control of
+   - SourceIP: Attacker machines IP, this is used to send the DNS request
+   - nsIPs: These are the name server IPs of the targetDomain.
+   - Port: This is the source port where the DNS packets are sent to
