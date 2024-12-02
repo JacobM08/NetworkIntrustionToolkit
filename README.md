@@ -6,7 +6,7 @@
 The purpose of this project is to understand how network traffic is captured and how unencrypted traffic can be analyzed. Additionally, the project aims to map a network topology and demonstrate what an adversary might look for when attempting lateral movement. Finally, the project explores a method of attack by implementing the Kaminsky attack.
 
 ## Contents
-- [Installation 🧰](#installation) 🧰
+- [Installation🧰](#installation) 🧰
 - [Running the Program](#running-the-program) ⚙️
 - [Sniffing](#sniffing)👃
 - [Network Mapping](#network-mapping)🗺️
